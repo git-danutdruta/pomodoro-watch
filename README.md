@@ -1,2 +1,2 @@
 # pomodoro-watch
-Java Swing app useful for tracking time sessions of work
+Java Swing app useful for time tracking in work/pause sessions. 
