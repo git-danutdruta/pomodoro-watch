@@ -27,6 +27,7 @@ public class PomodoroController {
         view.whenPlayButtonClick(() -> model.whenClockStart());
         view.whenPauseButtonClick(() -> model.whenClockPause());
         view.whenResetButtonClick(() -> model.whenClockReset());
+        view.setIconImage(model.getLogo());
 
     }
 }

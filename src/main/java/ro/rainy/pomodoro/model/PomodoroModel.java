@@ -5,6 +5,8 @@ import ro.rainy.pomodoro.handler.CycleIncreaseHandler;
 import ro.rainy.pomodoro.handler.TimeTypeSwitchHandler;
 import ro.rainy.pomodoro.handler.VisibilityChangeHandler;
 
+import java.awt.image.BufferedImage;
+
 /**
  * @proiect: pomodoro
  * @autor: daniel
@@ -36,4 +38,6 @@ public interface PomodoroModel {
     void whenClockPause();
 
     void whenClockReset();
+
+    BufferedImage getLogo();
 }

@@ -13,7 +13,9 @@ import ro.rainy.pomodoro.model.bean.Config;
 import ro.rainy.pomodoro.timer.Timer;
 import ro.rainy.pomodoro.util.Constants;
 
+import javax.imageio.ImageIO;
 import javax.swing.*;
+import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
@@ -210,5 +212,15 @@ public class PomodoroModelImpl implements PomodoroModel {
     @Override
     public void whenClockReset() {
         reset();
+    }
+
+    @Override
+    public BufferedImage getLogo() {
+        try {
+            return ImageIO.read(new File("static/pomodoro-logo.png"));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
     }
 }
