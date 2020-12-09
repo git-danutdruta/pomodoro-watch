@@ -30,7 +30,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         pauseBtn = new JButton(new ImageIcon("static/pause-button.png"));
         resetBtn = new JButton(new ImageIcon("static/stop-button.png"));
         counterLbl = new JLabel("00:00");
-        cyclesLbl = new JLabel("1");
+        cyclesLbl = new JLabel("0");
     }
 
     @Override
@@ -66,7 +66,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
 
     @Override
     public void build() {
-        contentPanel.add(settingBtn);
+//        contentPanel.add(settingBtn);
         contentPanel.add(counterLbl);
         contentPanel.add(playBtn);
         contentPanel.add(pauseBtn);
