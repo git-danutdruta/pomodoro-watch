@@ -1,8 +1,8 @@
 package ro.rainy.pomodoro;
 
+import ro.rainy.pomodoro.controller.PomodoroController;
 import ro.rainy.pomodoro.model.PomodoroModel;
 import ro.rainy.pomodoro.model.impl.PomodoroModelImpl;
-import ro.rainy.pomodoro.controller.PomodoroController;
 import ro.rainy.pomodoro.view.PomodoroView;
 import ro.rainy.pomodoro.view.impl.PomodoroViewImpl;
 
