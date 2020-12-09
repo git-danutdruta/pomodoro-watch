@@ -42,7 +42,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.clockChangeStateHandlerEventDispatcher = new EventDispatcher<>("nextState");
         this.timeTypeSwitchHandlerEventDispatcher = new EventDispatcher<>("timeSwitch");
         this.cycleIncreaseHandlerEventDispatcher = new EventDispatcher<>("cycleChange");
-        this.gson = new GsonBuilder().setPrettyPrinting().serializeNulls().create();
+        this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.timer = new Timer() {
             @Override
             protected void onTick() {
