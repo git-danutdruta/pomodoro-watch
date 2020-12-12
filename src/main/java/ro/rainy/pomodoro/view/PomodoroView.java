@@ -1,6 +1,9 @@
 package ro.rainy.pomodoro.view;
 
 import ro.rainy.pomodoro.handler.ButtonClickHandler;
+import ro.rainy.pomodoro.handler.CloseDialogHandler;
+import ro.rainy.pomodoro.handler.SliderChangeHandler;
+import ro.rainy.pomodoro.model.SliderRangeModel;
 
 import java.awt.*;
 
@@ -10,11 +13,25 @@ import java.awt.*;
  * @data: 09/11/2020__23:44
  */
 public interface PomodoroView {
+    void showException(Throwable throwable);
+
     void setVisible(boolean visible);
+
+    void setSettingsDialogVisible(boolean visible);
+
+    void setWorkSliderRangeModel(SliderRangeModel sliderModel);
+
+    void setPauseSliderRangeModel(SliderRangeModel sliderModel);
+
+    void setBigPauseSliderRangeModel(SliderRangeModel sliderModel);
+
+    void setCyclesSliderRangeModel(SliderRangeModel sliderModel);
 
     void setIconImage(Image image);
 
     void setNewCounterValue(String value);
+
+    void whenSettingButtonClick(ButtonClickHandler handler);
 
     void whenPlayButtonClick(ButtonClickHandler handler);
 
@@ -22,7 +39,29 @@ public interface PomodoroView {
 
     void whenResetButtonClick(ButtonClickHandler handler);
 
+    void whenWorkSliderChange(SliderChangeHandler handler);
+
+    void whenPauseSliderChange(SliderChangeHandler handler);
+
+    void whenBigPauseSliderChange(SliderChangeHandler handler);
+
+    void whenCyclesSliderChange(SliderChangeHandler handler);
+
+    void whenSaveSettingsButtonClick(ButtonClickHandler handler);
+
+    void whenSettingsDialogClose(CloseDialogHandler handler);
+
     void setColorOfTimeLabel(boolean isRelax);
 
     void setNumberOfCycle(int numberOfCycle);
+
+    void setWorkTime(int workTime);
+
+    void setPauseTime(int pauseTime);
+
+    void setBigPauseTime(int bigPauseTime);
+
+    void setCyclesOfTime(int cycles);
+
+
 }
