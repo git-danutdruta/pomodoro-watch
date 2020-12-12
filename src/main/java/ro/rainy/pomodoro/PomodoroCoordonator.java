@@ -16,6 +16,7 @@ public class PomodoroCoordonator {
 
         applicationStarter.whenApplicationStart(() -> {
             pomodoroModel.loadConfigs();
+            pomodoroModel.populateSettingsDialog();
             pomodoroModel.switchTimeType();
             pomodoroModel.setVisible(true);
         });
