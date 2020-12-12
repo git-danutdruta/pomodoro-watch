@@ -1,0 +1,6 @@
+{
+  "work_time": 25,
+  "pause_time": 5,
+  "big_pause_time": 15,
+  "cycles_to_big_pause": 4
+}
