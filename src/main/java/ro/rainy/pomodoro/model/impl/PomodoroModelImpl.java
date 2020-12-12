@@ -105,6 +105,7 @@ public class PomodoroModelImpl implements PomodoroModel {
      */
     private void checkFileStructureOrCreate() throws IOException {
         File confFile = new File(Constants.CONF_FILE);
+        LOG.debug("Check if conf file exits, '{}'", confFile);
         if (!confFile.exists()) {
             confFile.getParentFile().mkdirs();
             writeConf(getDefaultConfig());
@@ -119,6 +120,7 @@ public class PomodoroModelImpl implements PomodoroModel {
             checkFileStructureOrCreate();
             File confFile = new File(Constants.CONF_FILE);
             String configAsJson = FileUtils.readFileToString(confFile, StandardCharsets.UTF_8);
+            LOG.debug("Actual configuration : {}", configAsJson);
             currentConfig = gson.fromJson(configAsJson, Config.class);
             setCountDown(currentConfig.getWorkTime());
             setTimeOnLabel(countDown);
@@ -326,6 +328,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     public void whenConfigUpdate() {
         try {
             bindDataFromSliderModelToDomain();
+            LOG.debug("New configurations : {}", currentConfig);
             writeConf(currentConfig);
             reset();
             setSettingsDialogVisible(false);

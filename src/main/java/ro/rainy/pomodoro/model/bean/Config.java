@@ -51,4 +51,14 @@ public class Config {
     public void setCyclesToBigPause(int cyclesToBigPause) {
         this.cyclesToBigPause = cyclesToBigPause;
     }
+
+    @Override
+    public String toString() {
+        return "Config{" +
+                "workTime=" + workTime +
+                ", pauseTime=" + pauseTime +
+                ", bigPauseTime=" + bigPauseTime +
+                ", cyclesToBigPause=" + cyclesToBigPause +
+                '}';
+    }
 }
