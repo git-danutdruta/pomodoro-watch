@@ -8,9 +8,17 @@ Pomodoro  is a time management, break down work into intervals, traditionally 25
 
 # UI
 The application shows the following features:
+> - settings
+>  
+>   ![alt text](https://github.com/git-danutdruta/pomodoro-watch/blob/master/static/pomodoro_settings_dialog.png)
+>   - duration of work session
+>   - duration of pause/big pause session
+>   - number of cycles after you can take a big break 
 > - play button
 > - pause button
 > - reset button
+> - elapsed work sessions
+
 
 
 
