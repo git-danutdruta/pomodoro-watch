@@ -1,6 +1,10 @@
 package ro.rainy.pomodoro.view.impl;
 
+import net.miginfocom.swing.MigLayout;
 import ro.rainy.pomodoro.handler.ButtonClickHandler;
+import ro.rainy.pomodoro.handler.CloseDialogHandler;
+import ro.rainy.pomodoro.handler.SliderChangeHandler;
+import ro.rainy.pomodoro.model.SliderRangeModel;
 import ro.rainy.pomodoro.util.Constants;
 import ro.rainy.pomodoro.util.GuiUtil;
 import ro.rainy.pomodoro.view.AbstractFrame;
@@ -8,6 +12,8 @@ import ro.rainy.pomodoro.view.PomodoroView;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 
 /**
  * @proiect: pomodoro
@@ -23,6 +29,40 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     private JLabel counterLbl;
     private JLabel cyclesLbl;
 
+    private JDialog settingDialog;
+    private JPanel settingPanel;
+    private JLabel settingWorkTimeLbl;
+    private JLabel settingPauseTimeLbl;
+    private JLabel settingBigPauseTimeLbl;
+    private JLabel settingCyclesOfTimeLbl;
+    private JSlider settingWorkTimeSlider;
+    private JSlider settingPauseTimeSlider;
+    private JSlider settingBigPauseTimeSlider;
+    private JSlider settingCyclesOfTimeSlider;
+    private JTextField settingWorkTimeTxt;
+    private JTextField settingPauseTimeTxt;
+    private JTextField settingBigPauseTimeTxt;
+    private JTextField settingCyclesOfTimeTxt;
+    private JButton saveSettingBtn;
+
+    private void initSettingDialog() {
+        settingDialog = new JDialog();
+        settingPanel = new JPanel(new MigLayout("wrap 3", "[][grow, fill][]"));
+        settingWorkTimeLbl = new JLabel("Work");
+        settingPauseTimeLbl = new JLabel("Pause");
+        settingBigPauseTimeLbl = new JLabel("Big pause");
+        settingCyclesOfTimeLbl = new JLabel("Cycles");
+        settingWorkTimeSlider = new JSlider();
+        settingPauseTimeSlider = new JSlider();
+        settingBigPauseTimeSlider = new JSlider();
+        settingCyclesOfTimeSlider = new JSlider();
+        settingWorkTimeTxt = new JTextField(2);
+        settingPauseTimeTxt = new JTextField(2);
+        settingBigPauseTimeTxt = new JTextField(2);
+        settingCyclesOfTimeTxt = new JTextField(2);
+        saveSettingBtn = new JButton("Save", new ImageIcon("static/save.png"));
+    }
+
     private void initContent() {
         contentPanel = new JPanel();
         settingBtn = new JButton(new ImageIcon("static/settings-button.png"));
@@ -35,9 +75,20 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
 
     @Override
     public void init() {
+        initSettingDialog();
         initContent();
     }
 
+    private void setUpSettingDialog() {
+        settingDialog.setContentPane(settingPanel);
+        settingDialog.setLocationRelativeTo(this);
+        settingDialog.setTitle("Pomodoro Settings");
+        settingDialog.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+        settingWorkTimeTxt.setEditable(false);
+        settingPauseTimeTxt.setEditable(false);
+        settingBigPauseTimeTxt.setEditable(false);
+        settingCyclesOfTimeTxt.setEditable(false);
+    }
 
     private void setUpContent() {
         Dimension d20 = new Dimension(20, 20);
@@ -60,20 +111,53 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
 
     @Override
     public void setup() {
+        setUpSettingDialog();
         setUpContent();
         _setUp();
     }
 
-    @Override
-    public void build() {
-//        contentPanel.add(settingBtn);
+    private void buildSettingDialog() {
+        settingPanel.add(settingWorkTimeLbl, "");
+        settingPanel.add(settingWorkTimeSlider, "dock center");
+        settingPanel.add(settingWorkTimeTxt, "");
+        settingPanel.add(settingPauseTimeLbl, "");
+        settingPanel.add(settingPauseTimeSlider, "dock center");
+        settingPanel.add(settingPauseTimeTxt, "");
+        settingPanel.add(settingBigPauseTimeLbl, "");
+        settingPanel.add(settingBigPauseTimeSlider, "dock center");
+        settingPanel.add(settingBigPauseTimeTxt, "");
+        settingPanel.add(settingCyclesOfTimeLbl, "");
+        settingPanel.add(settingCyclesOfTimeSlider, "dock center");
+        settingPanel.add(settingCyclesOfTimeTxt, "");
+        settingPanel.add(saveSettingBtn, "span 3, gapy 15, align center");
+        settingDialog.pack();
+    }
+
+    private void _build() {
+        contentPanel.add(settingBtn);
         contentPanel.add(counterLbl);
         contentPanel.add(playBtn);
         contentPanel.add(pauseBtn);
         contentPanel.add(resetBtn);
         contentPanel.add(cyclesLbl);
+    }
+
+    @Override
+    public void build() {
+        buildSettingDialog();
+        _build();
 
         pack();
+    }
+
+    @Override
+    public void showException(Throwable throwable) {
+        JOptionPane.showMessageDialog(null, throwable.getMessage(), "Error", JOptionPane.ERROR_MESSAGE);
+    }
+
+    @Override
+    public void setSettingsDialogVisible(boolean visible) {
+        settingDialog.setVisible(visible);
     }
 
     @Override
@@ -92,6 +176,57 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     }
 
     @Override
+    public void setWorkTime(int workTime) {
+        settingWorkTimeSlider.setValue(workTime);
+        settingWorkTimeTxt.setText(String.valueOf(workTime));
+    }
+
+    @Override
+    public void setPauseTime(int pauseTime) {
+        settingPauseTimeSlider.setValue(pauseTime);
+        settingPauseTimeTxt.setText(String.valueOf(pauseTime));
+    }
+
+    @Override
+    public void setBigPauseTime(int bigPauseTime) {
+        settingBigPauseTimeSlider.setValue(bigPauseTime);
+        settingBigPauseTimeTxt.setText(String.valueOf(bigPauseTime));
+    }
+
+    @Override
+    public void setCyclesOfTime(int cycles) {
+        settingCyclesOfTimeSlider.setValue(cycles);
+        settingCyclesOfTimeTxt.setText(String.valueOf(cycles));
+    }
+
+
+    @Override
+    public void setWorkSliderRangeModel(SliderRangeModel sliderModel) {
+        settingWorkTimeSlider.setModel(sliderModel);
+    }
+
+    @Override
+    public void setPauseSliderRangeModel(SliderRangeModel sliderModel) {
+        settingPauseTimeSlider.setModel(sliderModel);
+    }
+
+    @Override
+    public void setBigPauseSliderRangeModel(SliderRangeModel sliderModel) {
+        settingBigPauseTimeSlider.setModel(sliderModel);
+    }
+
+    @Override
+    public void setCyclesSliderRangeModel(SliderRangeModel sliderModel) {
+        settingCyclesOfTimeSlider.setModel(sliderModel);
+    }
+
+
+    @Override
+    public void whenSettingButtonClick(ButtonClickHandler handler) {
+        settingBtn.addActionListener(clickListener -> handler.click());
+    }
+
+    @Override
     public void whenPlayButtonClick(ButtonClickHandler handler) {
         playBtn.addActionListener(clickListener -> handler.click());
     }
@@ -104,5 +239,70 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     @Override
     public void whenResetButtonClick(ButtonClickHandler handler) {
         resetBtn.addActionListener(clickListener -> handler.click());
+    }
+
+    @Override
+    public void whenSaveSettingsButtonClick(ButtonClickHandler handler) {
+        saveSettingBtn.addActionListener(clickListener -> handler.click());
+    }
+
+    @Override
+    public void whenSettingsDialogClose(CloseDialogHandler handler) {
+        settingDialog.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                handler.close();
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
+        });
+    }
+
+    @Override
+    public void whenWorkSliderChange(SliderChangeHandler handler) {
+        settingWorkTimeSlider.addChangeListener(slideListener -> handler.slide());
+    }
+
+    @Override
+    public void whenPauseSliderChange(SliderChangeHandler handler) {
+        settingPauseTimeSlider.addChangeListener(slideListener -> handler.slide());
+    }
+
+    @Override
+    public void whenBigPauseSliderChange(SliderChangeHandler handler) {
+        settingBigPauseTimeSlider.addChangeListener(slideListener -> handler.slide());
+    }
+
+    @Override
+    public void whenCyclesSliderChange(SliderChangeHandler handler) {
+        settingCyclesOfTimeSlider.addChangeListener(slideListener -> handler.slide());
     }
 }
