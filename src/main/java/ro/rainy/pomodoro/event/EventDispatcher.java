@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class EventDispatcher<T> {
-    private List<T> listeners;
-    private String methodName;
+    private final List<T> listeners;
+    private final String methodName;
 
     public EventDispatcher(String methodName) {
         this.listeners = new ArrayList<>();
@@ -19,8 +19,8 @@ public class EventDispatcher<T> {
         listeners.add(listener);
     }
 
-    public void removeListener(T Listener) {
-        listeners.remove(listeners);
+    public void removeListener(T listener) {
+        listeners.remove(listener);
     }
 
     public void dispatch(Object... args) {
