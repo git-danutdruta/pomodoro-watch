@@ -218,6 +218,7 @@ public class PomodoroModelImpl implements PomodoroModel {
 
     @Override
     public void setSettingsDialogVisible(boolean visible) {
+        LOG.debug("Making settings dialog {} visible", visible ? "" : "no");
         this.settingsDialogVisible = visible;
         visibilitySettingsDialogChangeHandlerEventDispatcher.dispatch();
     }
@@ -305,16 +306,19 @@ public class PomodoroModelImpl implements PomodoroModel {
     //------------
     @Override
     public void whenClockStart() {
+        LOG.debug("Countdown started");
         timer.start();
     }
 
     @Override
     public void whenClockPause() {
+        LOG.debug("Countdown paused");
         timer.pause();
     }
 
     @Override
     public void whenClockReset() {
+        LOG.debug("Countdown reset");
         reset();
     }
 
