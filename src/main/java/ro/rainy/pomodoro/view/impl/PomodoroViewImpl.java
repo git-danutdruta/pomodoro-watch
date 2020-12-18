@@ -6,7 +6,6 @@ import ro.rainy.pomodoro.handler.CloseDialogHandler;
 import ro.rainy.pomodoro.handler.SliderChangeHandler;
 import ro.rainy.pomodoro.model.SliderRangeModel;
 import ro.rainy.pomodoro.util.Constants;
-import ro.rainy.pomodoro.util.GuiUtil;
 import ro.rainy.pomodoro.view.AbstractFrame;
 import ro.rainy.pomodoro.view.PomodoroView;
 
