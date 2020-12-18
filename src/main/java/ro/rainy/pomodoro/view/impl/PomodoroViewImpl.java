@@ -106,7 +106,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         this.setContentPane(contentPanel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
-        GuiUtil.setPositionBottomRight(this);
+//        GuiUtil.setPositionBottomRight(this);
     }
 
     @Override
@@ -148,6 +148,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         _build();
 
         pack();
+        setLocationRelativeTo(null);
     }
 
     @Override
