@@ -7,7 +7,10 @@
     <groupId>ro.rainy.pomodoro</groupId>
     <artifactId>pomodoro</artifactId>
     <version>1.0.0.0</version>
-    <packaging>jar</packaging>
+    <modules>
+        <module>user-interface</module>
+    </modules>
+    <packaging>pom</packaging>
 
     <name>pomodoro</name>
 
