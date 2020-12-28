@@ -1,3 +1,5 @@
+[![<Rainy>](https://img.shields.io/circleci/build/gh/git-danutdruta/pomodoro-watch?style=plastic&token=f34f1aaa34bdd4be3a71c2c75cf4e9e924f76f6b)]()
+
 # Pomodoro-watch
 Java Swing app useful for time tracking in work/pause sessions. 
 
