@@ -32,6 +32,20 @@ public class EventDispatcherTest extends ContextHolder {
         updateListenerEventDispatcher.dispatch();
     }
 
+    @Test
+    public void removeListenerTest() {
+        EventDispatcher<TestListener> updateListenerEventDispatcher = new EventDispatcher<>("test");
+        updateListenerEventDispatcher.addListener(testListener);
+        context.checking(new Expectations() {{
+            oneOf(testListener).test();
+        }});
+        updateListenerEventDispatcher.dispatch();
+
+        updateListenerEventDispatcher.removeListener(testListener);
+
+        updateListenerEventDispatcher.dispatch();
+    }
+
 
     interface TestListener {
         void test();
