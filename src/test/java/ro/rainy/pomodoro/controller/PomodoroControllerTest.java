@@ -19,6 +19,10 @@ public class PomodoroControllerTest extends ContextHolder {
     public void setUp() {
         view = context.mock(PomodoroView.class);
         model = context.mock(PomodoroModel.class);
+
+
+
+//        new PomodoroController(view, model);
     }
 
     @Test
