@@ -24,8 +24,8 @@ public class ApplicationStarterTest extends ContextHolder {
         target.whenApplicationStart(applicationStartedHandler2);
 
         context.checking(new Expectations() {{
-            one(applicationStartedHandler1).applicationStarted();
-            one(applicationStartedHandler2).applicationStarted();
+            oneOf(applicationStartedHandler1).applicationStarted();
+            oneOf(applicationStartedHandler2).applicationStarted();
         }});
 
         target.start();
