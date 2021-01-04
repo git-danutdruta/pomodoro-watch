@@ -17,4 +17,17 @@ public class ApplicationStarterTest extends ContextHolder {
         applicationStartedHandler1 = context.mock(ApplicationStartHandler.class, "applicationStartedHandler1");
         applicationStartedHandler2 = context.mock(ApplicationStartHandler.class, "applicationStartedHandler2");
     }
+
+    @Test
+    public void notifyAnListenersWhenApplicationStarts() {
+        target.whenApplicationStart(applicationStartedHandler1);
+        target.whenApplicationStart(applicationStartedHandler2);
+
+        context.checking(new Expectations() {{
+            one(applicationStartedHandler1).applicationStarted();
+            one(applicationStartedHandler2).applicationStarted();
+        }});
+
+        target.start();
+    }
 }
