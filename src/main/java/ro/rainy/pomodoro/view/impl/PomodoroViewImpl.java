@@ -141,6 +141,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         contentPanel.add(playBtn);
         contentPanel.add(pauseBtn);
         contentPanel.add(resetBtn);
+        contentPanel.add(soundBtn);
         contentPanel.add(cyclesLbl);
     }
 
