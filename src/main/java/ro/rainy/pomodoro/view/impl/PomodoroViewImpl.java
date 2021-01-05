@@ -25,6 +25,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     private JButton playBtn;
     private JButton pauseBtn;
     private JButton resetBtn;
+    private JButton soundBtn;
     private JLabel counterLbl;
     private JLabel cyclesLbl;
 
