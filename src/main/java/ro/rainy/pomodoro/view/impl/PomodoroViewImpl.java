@@ -69,6 +69,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         playBtn = new JButton(new ImageIcon("static/play-button.png"));
         pauseBtn = new JButton(new ImageIcon("static/pause-button.png"));
         resetBtn = new JButton(new ImageIcon("static/stop-button.png"));
+        soundBtn = new JButton(new ImageIcon("static/sound-on.png"));
         counterLbl = new JLabel("00:00");
         cyclesLbl = new JLabel("0");
     }
@@ -96,6 +97,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         playBtn.setPreferredSize(d20);
         pauseBtn.setPreferredSize(d20);
         resetBtn.setPreferredSize(d20);
+        soundBtn.setPreferredSize(d20);
 
         counterLbl.setOpaque(true);
     }
