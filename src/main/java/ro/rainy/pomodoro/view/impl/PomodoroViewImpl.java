@@ -6,6 +6,7 @@ import ro.rainy.pomodoro.handler.CloseDialogHandler;
 import ro.rainy.pomodoro.handler.SliderChangeHandler;
 import ro.rainy.pomodoro.model.SliderRangeModel;
 import ro.rainy.pomodoro.util.Constants;
+import ro.rainy.pomodoro.util.GuiUtil;
 import ro.rainy.pomodoro.view.AbstractFrame;
 import ro.rainy.pomodoro.view.PomodoroView;
 
@@ -108,7 +109,6 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         this.setContentPane(contentPanel);
         this.setDefaultCloseOperation(EXIT_ON_CLOSE);
         this.setResizable(false);
-//        GuiUtil.setPositionBottomRight(this);
     }
 
     @Override
@@ -151,7 +151,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         _build();
 
         pack();
-        setLocationRelativeTo(null);
+        GuiUtil.setPositionBottomRight(this);
     }
 
     @Override
