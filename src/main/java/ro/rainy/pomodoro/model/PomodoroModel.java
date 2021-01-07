@@ -26,6 +26,8 @@ public interface PomodoroModel {
 
     boolean isSettingsDialogVisible();
 
+    void whenSoundPlayChange(SoundPlayStateChangeHandler soundPlayStateChangeHandler);
+
     void registerClockChangeStateHandler(ClockChangeStateHandler handler);
 
     void whenTimeTypeSwitch(TimeTypeSwitchHandler timeTypeSwitchHandler);
