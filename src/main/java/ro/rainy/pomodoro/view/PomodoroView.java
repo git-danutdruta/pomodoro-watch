@@ -29,6 +29,8 @@ public interface PomodoroView {
 
     void setIconImage(Image image);
 
+    void setSoundImageOnOff(boolean mark);
+
     void setNewCounterValue(String value);
 
     void whenSettingButtonClick(ButtonClickHandler handler);
