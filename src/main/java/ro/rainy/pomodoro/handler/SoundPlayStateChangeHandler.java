@@ -7,5 +7,5 @@ package ro.rainy.pomodoro.handler;
  */
 @FunctionalInterface
 public interface SoundPlayStateChangeHandler {
-    void changeState(boolean state);
+    void stateChange(boolean state);
 }
