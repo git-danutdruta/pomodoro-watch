@@ -165,6 +165,11 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     }
 
     @Override
+    public void setSoundImageOnOff(boolean mark) {
+        soundBtn.setIcon(mark ? new ImageIcon("static/sound-on.png") : new ImageIcon("static/sound-off.png"));
+    }
+
+    @Override
     public void setNewCounterValue(String value) {
         counterLbl.setText(value);
     }
