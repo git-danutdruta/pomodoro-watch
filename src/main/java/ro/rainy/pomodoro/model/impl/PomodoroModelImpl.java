@@ -238,7 +238,8 @@ public class PomodoroModelImpl implements PomodoroModel {
 
     @Override
     public void setAlternateSoundPlay() {
-
+        this.soundPlay = !this.soundPlay;
+        soundPlayStateChangeHandlerEventDispatcher.dispatch();
     }
 
     @Override
