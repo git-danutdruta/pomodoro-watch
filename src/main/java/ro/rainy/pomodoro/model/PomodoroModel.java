@@ -28,6 +28,8 @@ public interface PomodoroModel {
 
     void whenSoundPlayChange(SoundPlayStateChangeHandler soundPlayStateChangeHandler);
 
+    boolean isSoundPlaying();
+
     void registerClockChangeStateHandler(ClockChangeStateHandler handler);
 
     void whenTimeTypeSwitch(TimeTypeSwitchHandler timeTypeSwitchHandler);
