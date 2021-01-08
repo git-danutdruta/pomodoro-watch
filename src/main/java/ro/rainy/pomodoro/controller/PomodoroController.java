@@ -26,6 +26,7 @@ public class PomodoroController {
         model.whenTimeTypeSwitch(() -> view.setColorOfTimeLabel(model.isRelax()));
         model.registerClockChangeStateHandler(view::setNewCounterValue);
         model.whenSettingsDialogVisibilityChange(() -> view.setSettingsDialogVisible(model.isSettingsDialogVisible()));
+        model.whenSoundPlayChange(() -> view.setSoundImageOnOff(model.isSoundPlaying()));
 
         model.whenSettingWorkTimeChange(() -> view.setWorkTime(model.getWorkTime()));
         model.whenSettingPauseTimeChange(() -> view.setPauseTime(model.getPauseTime()));
