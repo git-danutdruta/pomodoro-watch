@@ -48,6 +48,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     private Config currentConfig;
     private boolean frameVisible;
     private boolean settingsDialogVisible;
+    private boolean soundPlay;
     private int countDown;
     private int cycles = 0;
     private boolean isRelax = true;
@@ -232,7 +233,17 @@ public class PomodoroModelImpl implements PomodoroModel {
 
     @Override
     public void whenSoundPlayChange(SoundPlayStateChangeHandler soundPlayStateChangeHandler) {
+        soundPlayStateChangeHandlerEventDispatcher.addListener(soundPlayStateChangeHandler);
+    }
 
+    @Override
+    public void setAlternateSoundPlay() {
+
+    }
+
+    @Override
+    public boolean isSoundPlaying() {
+        return soundPlay;
     }
 
     public void registerClockChangeStateHandler(ClockChangeStateHandler handler) {
