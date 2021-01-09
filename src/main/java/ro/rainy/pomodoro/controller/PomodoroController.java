@@ -39,6 +39,7 @@ public class PomodoroController {
         view.whenPauseButtonClick(model::whenClockPause);
         view.whenResetButtonClick(model::whenClockReset);
         view.whenSaveSettingsButtonClick(model::whenConfigUpdate);
+        view.whenSoundButtonClick(model::setAlternateSoundPlay);
 
         view.whenWorkSliderChange(() -> view.setWorkTime(model.getWorkSliderRangeModel().getValue()));
         view.whenPauseSliderChange(() -> view.setPauseTime(model.getPauseSliderRangeModel().getValue()));
