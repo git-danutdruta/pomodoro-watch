@@ -19,6 +19,7 @@ The application shows the following features:
 > - play button
 > - pause button
 > - reset button
+> - sound button
 > - elapsed work sessions
 
 In settings section you can modify work time session, break/big brake duration and after how many working sets
