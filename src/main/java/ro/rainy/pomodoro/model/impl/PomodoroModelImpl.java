@@ -2,6 +2,7 @@ package ro.rainy.pomodoro.model.impl;
 
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.goxr3plus.streamplayer.stream.StreamPlayerException;
 import org.apache.commons.io.FileUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,7 @@ import ro.rainy.pomodoro.event.EventDispatcher;
 import ro.rainy.pomodoro.handler.*;
 import ro.rainy.pomodoro.model.PomodoroModel;
 import ro.rainy.pomodoro.model.SliderRangeModel;
+import ro.rainy.pomodoro.model.audio.PomodoroAudioPlayer;
 import ro.rainy.pomodoro.model.bean.Config;
 import ro.rainy.pomodoro.timer.Timer;
 import ro.rainy.pomodoro.util.Constants;
@@ -45,6 +47,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     private final SliderRangeModel cyclesSliderModel;
     private final Timer timer;
     private final Gson gson;
+    private final PomodoroAudioPlayer audioPlayer;
     private Config currentConfig;
     private boolean frameVisible;
     private boolean settingsDialogVisible;
@@ -65,6 +68,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.settingBigPauseTimeChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.settingCyclesChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.soundPlayStateChangeHandlerEventDispatcher = new EventDispatcher<>("stateChange");
+        this.audioPlayer = new PomodoroAudioPlayer();
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.timer = new Timer() {
             @Override
@@ -125,12 +129,16 @@ public class PomodoroModelImpl implements PomodoroModel {
             String configAsJson = FileUtils.readFileToString(confFile, StandardCharsets.UTF_8);
             LOG.debug("Actual configuration : {}", configAsJson);
             currentConfig = gson.fromJson(configAsJson, Config.class);
+            audioPlayer.open(new File("static/sound-on.mp3"));
             setCountDown(currentConfig.getWorkTime());
             setTimeOnLabel(countDown);
         } catch (IOException e) {
             LOG.error(e.getMessage());
             exceptionThrownHandlerEventDispatcher.dispatch(e);
             System.exit(1);
+        } catch (StreamPlayerException e) {
+            LOG.error(e.getMessage());
+            exceptionThrownHandlerEventDispatcher.dispatch(e);
         }
     }
 
@@ -326,6 +334,12 @@ public class PomodoroModelImpl implements PomodoroModel {
     @Override
     public void whenClockStart() {
         LOG.debug("Countdown started");
+        try {
+            audioPlayer.play();
+        } catch (StreamPlayerException e) {
+            LOG.error(e.getMessage());
+            exceptionThrownHandlerEventDispatcher.dispatch(e);
+        }
         timer.start();
     }
 
