@@ -108,8 +108,8 @@ public class PomodoroModelImpl implements PomodoroModel {
     /**
      * Check if configs file exist, otherwise create him with default values.
      *
-     * @throws IOException
-     */
+     * @throws IOException - if there's no path or can not be created one
+     **/
     private void checkFileStructureOrCreate() throws IOException {
         File confFile = new File(Constants.CONF_FILE);
         LOG.debug("Check if conf file exits, '{}'", confFile);
@@ -335,7 +335,13 @@ public class PomodoroModelImpl implements PomodoroModel {
     public void whenClockStart() {
         LOG.debug("Countdown started");
         try {
-            audioPlayer.play();
+            if (isSoundPlaying()) {
+                if (audioPlayer.isPaused()) {
+                    audioPlayer.resume();
+                } else {
+                    audioPlayer.play();
+                }
+            }
         } catch (StreamPlayerException e) {
             LOG.error(e.getMessage());
             exceptionThrownHandlerEventDispatcher.dispatch(e);
