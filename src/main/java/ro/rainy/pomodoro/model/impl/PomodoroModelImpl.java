@@ -346,6 +346,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     @Override
     public void whenClockPause() {
         LOG.debug("Countdown paused");
+        audioPlayer.pause();
         timer.pause();
     }
 
