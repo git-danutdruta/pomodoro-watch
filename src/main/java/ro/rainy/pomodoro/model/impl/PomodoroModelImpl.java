@@ -336,12 +336,10 @@ public class PomodoroModelImpl implements PomodoroModel {
     public void whenClockStart() {
         LOG.debug("Countdown started");
         try {
-            if (isSoundPlaying()) {
-                if (audioPlayer.isPaused()) {
-                    audioPlayer.resume();
-                } else {
-                    audioPlayer.play();
-                }
+            if (audioPlayer.isPaused()) {
+                audioPlayer.resume();
+            } else {
+                audioPlayer.play();
             }
         } catch (StreamPlayerException e) {
             LOG.error(e.getMessage());
