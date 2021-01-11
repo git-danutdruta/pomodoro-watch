@@ -114,7 +114,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         File confFile = new File(Constants.CONF_FILE);
         LOG.debug("Check if conf file exits, '{}'", confFile);
         if (!confFile.exists()) {
-            confFile.getParentFile().mkdirs();
+            final boolean isDirPathMk = confFile.getParentFile().mkdirs();
             writeConf(getDefaultConfig());
         }
         //todo check sanity of data
@@ -247,6 +247,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     @Override
     public void setAlternateSoundPlay() {
         this.soundPlay = !this.soundPlay;
+        audioPlayer.setMute(!soundPlay);
         soundPlayStateChangeHandlerEventDispatcher.dispatch();
     }
 
