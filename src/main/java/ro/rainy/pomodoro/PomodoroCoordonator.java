@@ -21,6 +21,7 @@ public class PomodoroCoordonator {
             pomodoroModel.loadConfigs();
             pomodoroModel.populateSettingsDialog();
             pomodoroModel.switchTimeType();
+            pomodoroModel.setAlternateSoundPlay();
             pomodoroModel.setVisible(true);
         });
     }
