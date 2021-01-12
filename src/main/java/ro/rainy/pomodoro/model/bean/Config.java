@@ -20,6 +20,9 @@ public class Config {
     @SerializedName("cycles_to_big_pause")
     private int cyclesToBigPause;
 
+    @SerializedName("sound_on_file_path")
+    private String soundOnFilePath;
+
     public int getWorkTime() {
         return workTime;
     }
