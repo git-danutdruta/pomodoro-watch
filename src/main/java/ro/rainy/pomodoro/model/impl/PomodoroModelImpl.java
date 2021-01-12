@@ -93,6 +93,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         config.setPauseTime(5);
         config.setBigPauseTime(15);
         config.setCyclesToBigPause(4);
+        config.setSoundOnFilePath("static/sound-on.mp3");
         return config;
     }
 
@@ -129,7 +130,7 @@ public class PomodoroModelImpl implements PomodoroModel {
             String configAsJson = FileUtils.readFileToString(confFile, StandardCharsets.UTF_8);
             LOG.debug("Actual configuration : {}", configAsJson);
             currentConfig = gson.fromJson(configAsJson, Config.class);
-            audioPlayer.open(new File("static/sound-on.mp3"));
+            audioPlayer.open(new File(currentConfig.getSoundOnFilePath()));
             setCountDown(currentConfig.getWorkTime());
             setTimeOnLabel(countDown);
         } catch (IOException e) {
@@ -170,6 +171,7 @@ public class PomodoroModelImpl implements PomodoroModel {
      */
     private void reset() {
         timer.cancel();
+        audioPlayer.stop();
         cycles = 0;
         isRelax = true; // in next line will be switched to proper value
         switchTimeType();
