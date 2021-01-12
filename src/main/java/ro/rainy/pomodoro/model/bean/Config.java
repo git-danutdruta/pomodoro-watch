@@ -55,6 +55,14 @@ public class Config {
         this.cyclesToBigPause = cyclesToBigPause;
     }
 
+    public String getSoundOnFilePath() {
+        return soundOnFilePath;
+    }
+
+    public void setSoundOnFilePath(String soundOnFilePath) {
+        this.soundOnFilePath = soundOnFilePath;
+    }
+
     @Override
     public String toString() {
         return "Config{" +
