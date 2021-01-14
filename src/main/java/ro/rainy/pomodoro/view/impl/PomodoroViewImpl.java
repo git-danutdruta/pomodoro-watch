@@ -45,7 +45,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     private JTextField settingPauseTimeTxt;
     private JTextField settingBigPauseTimeTxt;
     private JTextField settingCyclesOfTimeTxt;
-//    private JFileChooser settingsSoundFileChooser;
+    private JFileChooser settingsSoundFileChooser;
     private JButton saveSettingBtn;
 
     private void initSettingDialog() {
@@ -64,7 +64,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingPauseTimeTxt = new JTextField(2);
         settingBigPauseTimeTxt = new JTextField(2);
         settingCyclesOfTimeTxt = new JTextField(2);
-//        settingsSoundFileChooser = new JFileChooser();
+        settingsSoundFileChooser = new JFileChooser();
         saveSettingBtn = new JButton("Save", new ImageIcon("static/save.png"));
     }
 
