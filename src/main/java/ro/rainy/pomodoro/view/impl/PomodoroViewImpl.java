@@ -138,7 +138,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingPanel.add(settingCyclesOfTimeSlider, "dock center");
         settingPanel.add(settingCyclesOfTimeTxt, "");
         settingPanel.add(settingSoundPathLbl, "");
-        settingPanel.add(openSoundFileBtn, "span 2");
+        settingPanel.add(openSoundFileBtn, "span 2, dock center");
         settingPanel.add(saveSettingBtn, "span 3, gapy 15, align center");
         settingDialog.pack();
     }
