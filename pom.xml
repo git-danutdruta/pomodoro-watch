@@ -7,10 +7,10 @@
     <groupId>ro.rainy.pomodoro</groupId>
     <artifactId>pomodoro</artifactId>
     <version>1.0.0.0</version>
-    <modules>
-        <module>user-interface</module>
-    </modules>
-    <packaging>pom</packaging>
+<!--    <modules>-->
+<!--        <module>user-interface</module>-->
+<!--    </modules>-->
+    <packaging>jar</packaging>
 
     <name>pomodoro</name>
 
@@ -42,6 +42,13 @@
         <log4j-core.version>2.14.0</log4j-core.version>
         <commons-beanutils.version>1.9.4</commons-beanutils.version>
     </properties>
+
+    <repositories>
+        <repository>
+            <id>jitpack.io</id>
+            <url>https://jitpack.io</url>
+        </repository>
+    </repositories>
 
     <dependencies>
         <dependency>
@@ -106,6 +113,12 @@
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
             <version>${gson.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>com.github.goxr3plus</groupId>
+            <artifactId>java-stream-player</artifactId>
+            <version>9.0.4</version>
         </dependency>
 
     </dependencies>
