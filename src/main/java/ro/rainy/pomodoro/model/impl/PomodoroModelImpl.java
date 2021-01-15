@@ -34,6 +34,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     private final EventDispatcher<ClockChangeStateHandler> clockChangeStateHandlerEventDispatcher;
     private final EventDispatcher<TimeTypeSwitchHandler> timeTypeSwitchHandlerEventDispatcher;
     private final EventDispatcher<CycleIncreaseHandler> cycleIncreaseHandlerEventDispatcher;
+    private final EventDispatcher<SoundPlayStateChangeHandler> soundPlayStateChangeHandlerEventDispatcher;
     private final EventDispatcher<SettingTimeChangeHandler> settingWorkTimeChangeHandlerEventDispatcher;
     private final EventDispatcher<SettingTimeChangeHandler> settingPauseTimeChangeHandlerEventDispatcher;
     private final EventDispatcher<SettingTimeChangeHandler> settingBigPauseTimeChangeHandlerEventDispatcher;
@@ -62,6 +63,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.settingPauseTimeChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.settingBigPauseTimeChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.settingCyclesChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
+        this.soundPlayStateChangeHandlerEventDispatcher = new EventDispatcher<>("stateChange");
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.timer = new Timer() {
             @Override
@@ -226,6 +228,11 @@ public class PomodoroModelImpl implements PomodoroModel {
     @Override
     public boolean isSettingsDialogVisible() {
         return this.settingsDialogVisible;
+    }
+
+    @Override
+    public void whenSoundPlayChange(SoundPlayStateChangeHandler soundPlayStateChangeHandler) {
+
     }
 
     public void registerClockChangeStateHandler(ClockChangeStateHandler handler) {
