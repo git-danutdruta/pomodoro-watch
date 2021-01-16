@@ -243,6 +243,10 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingCyclesOfTimeSlider.setModel(sliderModel);
     }
 
+    @Override
+    public void setSoundFileChooserVisible() {
+        settingsSoundFileChooser.showOpenDialog(this);
+    }
 
     @Override
     public void whenSettingButtonClick(ButtonClickHandler handler) {
