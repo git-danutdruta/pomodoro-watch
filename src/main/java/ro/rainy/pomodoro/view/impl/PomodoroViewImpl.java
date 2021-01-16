@@ -9,6 +9,7 @@ import ro.rainy.pomodoro.util.Constants;
 import ro.rainy.pomodoro.util.GuiUtil;
 import ro.rainy.pomodoro.view.AbstractFrame;
 import ro.rainy.pomodoro.view.PomodoroView;
+import ro.rainy.pomodoro.view.component.PomodoroFileChooser;
 
 import javax.swing.*;
 import java.awt.*;
@@ -45,7 +46,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     private JTextField settingPauseTimeTxt;
     private JTextField settingBigPauseTimeTxt;
     private JTextField settingCyclesOfTimeTxt;
-    private JFileChooser settingsSoundFileChooser;
+    private PomodoroFileChooser settingsSoundFileChooser;
     private JButton openSoundFileBtn;
     private JButton saveSettingBtn;
 
@@ -65,7 +66,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingPauseTimeTxt = new JTextField(2);
         settingBigPauseTimeTxt = new JTextField(2);
         settingCyclesOfTimeTxt = new JTextField(2);
-        settingsSoundFileChooser = new JFileChooser();
+        settingsSoundFileChooser = new PomodoroFileChooser();
         openSoundFileBtn = new JButton("Choose sound file");
         saveSettingBtn = new JButton("Save", new ImageIcon("static/save.png"));
     }
