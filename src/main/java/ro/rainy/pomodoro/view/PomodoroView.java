@@ -27,6 +27,8 @@ public interface PomodoroView {
 
     void setCyclesSliderRangeModel(SliderRangeModel sliderModel);
 
+    void setSoundFileChooserVisible();
+
     void setIconImage(Image image);
 
     void setSoundImageOnOff(boolean mark);
