@@ -12,6 +12,8 @@ import ro.rainy.pomodoro.view.PomodoroView;
 import ro.rainy.pomodoro.view.component.PomodoroFileChooser;
 
 import javax.swing.*;
+import javax.swing.filechooser.FileFilter;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import java.awt.*;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
@@ -97,6 +99,9 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingPauseTimeTxt.setEditable(false);
         settingBigPauseTimeTxt.setEditable(false);
         settingCyclesOfTimeTxt.setEditable(false);
+        FileFilter filter = new FileNameExtensionFilter("Allowed file .wav, .mp3 ", "wav", "mp3");
+        settingsSoundFileChooser.setAcceptAllFileFilterUsed(false);
+        settingsSoundFileChooser.setFileFilter(filter);
     }
 
     private void setUpContent() {
