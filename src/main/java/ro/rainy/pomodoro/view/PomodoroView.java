@@ -45,6 +45,8 @@ public interface PomodoroView {
 
     void whenSoundButtonClick(ButtonClickHandler handler);
 
+    void whenSoundPickerClick(ButtonClickHandler handler);
+
     void whenWorkSliderChange(SliderChangeHandler handler);
 
     void whenPauseSliderChange(SliderChangeHandler handler);
