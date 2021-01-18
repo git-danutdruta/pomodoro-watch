@@ -279,7 +279,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     }
 
     @Override
-    public void whenSoundPickerClick(ButtonClickHandler handler) {
+    public void whenSoundChooserButtonClick(ButtonClickHandler handler) {
         openSoundFileBtn.addActionListener(clickListener -> handler.click());
     }
 
