@@ -81,4 +81,6 @@ public interface PomodoroModel {
     SliderRangeModel getBigPauseSliderRangeModel();
 
     SliderRangeModel getCyclesSliderRangeModel();
+
+    PomodoroFileChooserModel getFileChooserModel();
 }
