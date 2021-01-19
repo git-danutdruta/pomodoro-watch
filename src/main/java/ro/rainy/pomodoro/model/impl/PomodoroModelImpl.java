@@ -8,6 +8,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import ro.rainy.pomodoro.event.EventDispatcher;
 import ro.rainy.pomodoro.handler.*;
+import ro.rainy.pomodoro.model.PomodoroFileChooserModel;
 import ro.rainy.pomodoro.model.PomodoroModel;
 import ro.rainy.pomodoro.model.SliderRangeModel;
 import ro.rainy.pomodoro.model.audio.PomodoroAudioPlayer;
@@ -49,6 +50,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     private final Gson gson;
     private final PomodoroAudioPlayer audioPlayer;
     private Config currentConfig;
+    private PomodoroFileChooserModel fileChooserModel;
     private boolean frameVisible;
     private boolean settingsDialogVisible;
     private boolean soundPlay;
@@ -69,6 +71,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.settingCyclesChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.soundPlayStateChangeHandlerEventDispatcher = new EventDispatcher<>("stateChange");
         this.audioPlayer = new PomodoroAudioPlayer();
+        fileChooserModel = new PomodoroFileChooserModelImpl();
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.timer = new Timer() {
             @Override
