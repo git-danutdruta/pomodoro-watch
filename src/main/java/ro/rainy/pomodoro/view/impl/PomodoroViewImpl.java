@@ -4,6 +4,7 @@ import net.miginfocom.swing.MigLayout;
 import ro.rainy.pomodoro.handler.ButtonClickHandler;
 import ro.rainy.pomodoro.handler.CloseDialogHandler;
 import ro.rainy.pomodoro.handler.SliderChangeHandler;
+import ro.rainy.pomodoro.model.PomodoroFileChooserModel;
 import ro.rainy.pomodoro.model.SliderRangeModel;
 import ro.rainy.pomodoro.util.Constants;
 import ro.rainy.pomodoro.util.GuiUtil;
@@ -241,6 +242,11 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     @Override
     public void setCyclesSliderRangeModel(SliderRangeModel sliderModel) {
         settingCyclesOfTimeSlider.setModel(sliderModel);
+    }
+
+    @Override
+    public void setSoundFileChooserModel(PomodoroFileChooserModel fileChooserModel) {
+        settingsSoundFileChooser.setFileChooserModel(fileChooserModel);
     }
 
     @Override
