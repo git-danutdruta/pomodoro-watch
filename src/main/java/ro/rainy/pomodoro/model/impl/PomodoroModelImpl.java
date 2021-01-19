@@ -71,7 +71,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.settingCyclesChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.soundPlayStateChangeHandlerEventDispatcher = new EventDispatcher<>("stateChange");
         this.audioPlayer = new PomodoroAudioPlayer();
-        fileChooserModel = new PomodoroFileChooserModelImpl();
+        this.fileChooserModel = new PomodoroFileChooserModelImpl();
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.timer = new Timer() {
             @Override
@@ -415,6 +415,11 @@ public class PomodoroModelImpl implements PomodoroModel {
     @Override
     public SliderRangeModel getCyclesSliderRangeModel() {
         return this.cyclesSliderModel;
+    }
+
+    @Override
+    public PomodoroFileChooserModel getFileChooserModel() {
+        return this.fileChooserModel;
     }
 
     @Override
