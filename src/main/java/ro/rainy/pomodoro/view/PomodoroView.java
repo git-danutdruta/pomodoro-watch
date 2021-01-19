@@ -3,6 +3,7 @@ package ro.rainy.pomodoro.view;
 import ro.rainy.pomodoro.handler.ButtonClickHandler;
 import ro.rainy.pomodoro.handler.CloseDialogHandler;
 import ro.rainy.pomodoro.handler.SliderChangeHandler;
+import ro.rainy.pomodoro.model.PomodoroFileChooserModel;
 import ro.rainy.pomodoro.model.SliderRangeModel;
 
 import java.awt.*;
@@ -26,6 +27,8 @@ public interface PomodoroView {
     void setBigPauseSliderRangeModel(SliderRangeModel sliderModel);
 
     void setCyclesSliderRangeModel(SliderRangeModel sliderModel);
+
+    void setSoundFileChooserModel(PomodoroFileChooserModel fileChooserModel);
 
     void setSoundFileChooserVisible();
 
