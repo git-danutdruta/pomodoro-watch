@@ -50,6 +50,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     private JTextField settingBigPauseTimeTxt;
     private JTextField settingCyclesOfTimeTxt;
     private PomodoroFileChooser settingsSoundFileChooser;
+    private JTextField settingSoundFilePathTxt;
     private JButton openSoundFileBtn;
     private JButton saveSettingBtn;
 
