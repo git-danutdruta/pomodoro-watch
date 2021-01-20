@@ -49,8 +49,8 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     private JTextField settingPauseTimeTxt;
     private JTextField settingBigPauseTimeTxt;
     private JTextField settingCyclesOfTimeTxt;
-    private PomodoroFileChooser settingsSoundFileChooser;
     private JTextField settingSoundFilePathTxt;
+    private PomodoroFileChooser settingsSoundFileChooser;
     private JButton openSoundFileBtn;
     private JButton saveSettingBtn;
 
@@ -70,6 +70,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingPauseTimeTxt = new JTextField(2);
         settingBigPauseTimeTxt = new JTextField(2);
         settingCyclesOfTimeTxt = new JTextField(2);
+        settingSoundFilePathTxt = new JTextField(10);
         settingsSoundFileChooser = new PomodoroFileChooser();
         openSoundFileBtn = new JButton("Choose sound file");
         saveSettingBtn = new JButton("Save", new ImageIcon("static/save.png"));
@@ -101,6 +102,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingPauseTimeTxt.setEditable(false);
         settingBigPauseTimeTxt.setEditable(false);
         settingCyclesOfTimeTxt.setEditable(false);
+        settingSoundFilePathTxt.setEditable(false);
         FileFilter filter = new FileNameExtensionFilter("Allowed file .wav, .mp3 ", "wav", "mp3");
         settingsSoundFileChooser.setAcceptAllFileFilterUsed(false);
         settingsSoundFileChooser.setFileFilter(filter);
@@ -147,6 +149,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingPanel.add(settingCyclesOfTimeTxt, "");
         settingPanel.add(settingSoundPathLbl, "");
         settingPanel.add(openSoundFileBtn, "span 2, dock center");
+        settingPanel.add(settingSoundFilePathTxt, "span 3, grow");
         settingPanel.add(saveSettingBtn, "span 3, gapy 15, align center");
         settingDialog.pack();
     }
