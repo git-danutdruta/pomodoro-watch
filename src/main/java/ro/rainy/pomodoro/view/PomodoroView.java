@@ -2,6 +2,7 @@ package ro.rainy.pomodoro.view;
 
 import ro.rainy.pomodoro.handler.ButtonClickHandler;
 import ro.rainy.pomodoro.handler.CloseDialogHandler;
+import ro.rainy.pomodoro.handler.FileSelectionChangeHandler;
 import ro.rainy.pomodoro.handler.SliderChangeHandler;
 import ro.rainy.pomodoro.model.PomodoroFileChooserModel;
 import ro.rainy.pomodoro.model.SliderRangeModel;
@@ -57,6 +58,8 @@ public interface PomodoroView {
     void whenBigPauseSliderChange(SliderChangeHandler handler);
 
     void whenCyclesSliderChange(SliderChangeHandler handler);
+
+    void whenSoundFileChooserSelectionChange(FileSelectionChangeHandler selectionChangeHandler);
 
     void whenSaveSettingsButtonClick(ButtonClickHandler handler);
 
