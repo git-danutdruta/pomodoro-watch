@@ -51,6 +51,7 @@ public class PomodoroController {
         view.setPauseSliderRangeModel(model.getPauseSliderRangeModel());
         view.setBigPauseSliderRangeModel(model.getBigPauseSliderRangeModel());
         view.setCyclesSliderRangeModel(model.getCyclesSliderRangeModel());
+        view.setSoundFileChooserModel(model.getFileChooserModel());
 
         view.setIconImage(model.getLogo());
 
