@@ -197,6 +197,8 @@ public class PomodoroModelImpl implements PomodoroModel {
         currentConfig.setPauseTime(pauseSliderModel.getValue());
         currentConfig.setBigPauseTime(bigPauseSliderModel.getValue());
         currentConfig.setCyclesToBigPause(cyclesSliderModel.getValue());
+        //todo null check
+        currentConfig.setSoundOnFilePath(fileChooserModel.getSelectedFile().getPath());
     }
 
     /**
