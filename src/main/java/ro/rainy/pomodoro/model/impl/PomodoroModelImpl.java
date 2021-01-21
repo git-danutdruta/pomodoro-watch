@@ -389,6 +389,11 @@ public class PomodoroModelImpl implements PomodoroModel {
     }
 
     @Override
+    public void updateSoundPathFileSelection() {
+
+    }
+
+    @Override
     public BufferedImage getLogo() {
         try {
             return ImageIO.read(new File("static/pomodoro-logo.png"));
