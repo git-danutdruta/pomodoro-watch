@@ -70,6 +70,8 @@ public interface PomodoroModel {
 
     void whenSettingDialogClose();
 
+    void updateSoundPathFileSelection();
+
     BufferedImage getLogo();
 
     void populateSettingsDialog();
