@@ -46,6 +46,7 @@ public class PomodoroController {
         view.whenPauseSliderChange(() -> view.setPauseTime(model.getPauseSliderRangeModel().getValue()));
         view.whenBigPauseSliderChange(() -> view.setBigPauseTime(model.getBigPauseSliderRangeModel().getValue()));
         view.whenCyclesSliderChange(() -> view.setCyclesOfTime(model.getCyclesSliderRangeModel().getValue()));
+        view.whenSoundFileChooserSelectionChange(model::updateSoundPathFileSelection);
 
         view.setWorkSliderRangeModel(model.getWorkSliderRangeModel());
         view.setPauseSliderRangeModel(model.getPauseSliderRangeModel());
