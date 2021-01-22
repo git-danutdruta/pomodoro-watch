@@ -52,6 +52,8 @@ public interface PomodoroModel {
 
     void whenSettingCyclesTimeChange(SettingTimeChangeHandler timeChangeHandler);
 
+    void whenSoundSelectionChange(UpdateSelectionHandler soundSelectionUpdateHandler);
+
     int getWorkTime();
 
     int getPauseTime();
