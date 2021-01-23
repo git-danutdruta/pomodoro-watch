@@ -195,6 +195,11 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
     }
 
     @Override
+    public void setSoundFilePathTxt(String filePathTxt) {
+
+    }
+
+    @Override
     public void setColorOfTimeLabel(boolean isRelax) {
         counterLbl.setBackground(isRelax ? Constants.OFF_COLOR : Constants.ON_COLOR);
     }
