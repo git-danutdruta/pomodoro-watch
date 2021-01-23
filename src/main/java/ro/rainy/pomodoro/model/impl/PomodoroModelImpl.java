@@ -42,6 +42,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     private final EventDispatcher<SettingTimeChangeHandler> settingPauseTimeChangeHandlerEventDispatcher;
     private final EventDispatcher<SettingTimeChangeHandler> settingBigPauseTimeChangeHandlerEventDispatcher;
     private final EventDispatcher<SettingTimeChangeHandler> settingCyclesChangeHandlerEventDispatcher;
+    private final EventDispatcher<UpdateSelectionHandler> settingSoundPathEventDispatcher;
     private final SliderRangeModel workSliderModel;
     private final SliderRangeModel pauseSliderModel;
     private final SliderRangeModel bigPauseSliderModel;
@@ -70,6 +71,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.settingBigPauseTimeChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.settingCyclesChangeHandlerEventDispatcher = new EventDispatcher<>("timeChange");
         this.soundPlayStateChangeHandlerEventDispatcher = new EventDispatcher<>("stateChange");
+        this.settingSoundPathEventDispatcher = new EventDispatcher<>("updateSelection");
         this.audioPlayer = new PomodoroAudioPlayer();
         this.fileChooserModel = new PomodoroFileChooserModelImpl();
         this.gson = new GsonBuilder().setPrettyPrinting().create();
@@ -319,6 +321,11 @@ public class PomodoroModelImpl implements PomodoroModel {
     }
 
     @Override
+    public void whenSoundSelectionChange(UpdateSelectionHandler soundSelectionUpdateHandler) {
+        settingSoundPathEventDispatcher.addListener(soundSelectionUpdateHandler);
+    }
+
+    @Override
     public int getWorkTime() {
         return currentConfig.getWorkTime();
     }
@@ -390,7 +397,10 @@ public class PomodoroModelImpl implements PomodoroModel {
 
     @Override
     public void updateSoundPathFileSelection() {
+        File file = fileChooserModel.getSelectedFile();
+        if (file != null) {
 
+        }
     }
 
     @Override
