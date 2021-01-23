@@ -39,6 +39,8 @@ public interface PomodoroView {
 
     void setNewCounterValue(String value);
 
+    void setSoundFilePathTxt(String filePathTxt);
+
     void whenSettingButtonClick(ButtonClickHandler handler);
 
     void whenPlayButtonClick(ButtonClickHandler handler);
