@@ -62,6 +62,8 @@ public interface PomodoroModel {
 
     int getCyclesOfTime();
 
+    String getPathOfSound();
+
     void whenClockStart();
 
     void whenClockPause();
