@@ -355,11 +355,6 @@ public class PomodoroModelImpl implements PomodoroModel {
         return currentConfig.getCyclesToBigPause();
     }
 
-    @Override
-    public String getPathOfSound() {
-        return currentConfig.getSoundOnFilePath();
-    }
-
     //------------
     @Override
     public void whenClockStart() {
@@ -399,6 +394,14 @@ public class PomodoroModelImpl implements PomodoroModel {
     public void whenSettingDialogClose() {
         setSettingsDialogVisible(false);
         populateSettingsDialog();
+    }
+
+    @Override
+    public void updateSoundPathFileSelection() {
+        File file = fileChooserModel.getSelectedFile();
+        if (file != null) {
+            settingSoundPathEventDispatcher.dispatch(file.getAbsolutePath());
+        }
     }
 
     @Override
@@ -457,6 +460,6 @@ public class PomodoroModelImpl implements PomodoroModel {
         settingPauseTimeChangeHandlerEventDispatcher.dispatch();
         settingBigPauseTimeChangeHandlerEventDispatcher.dispatch();
         settingCyclesChangeHandlerEventDispatcher.dispatch();
-        settingSoundPathEventDispatcher.dispatch();
+        updateSoundPathFileSelection();
     }
 }
