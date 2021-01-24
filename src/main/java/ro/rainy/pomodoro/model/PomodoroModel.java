@@ -62,8 +62,6 @@ public interface PomodoroModel {
 
     int getCyclesOfTime();
 
-    String getPathOfSound();
-
     void whenClockStart();
 
     void whenClockPause();
@@ -73,6 +71,8 @@ public interface PomodoroModel {
     void whenConfigUpdate();
 
     void whenSettingDialogClose();
+
+    void updateSoundPathFileSelection();
 
     BufferedImage getLogo();
 
