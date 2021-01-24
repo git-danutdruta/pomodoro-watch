@@ -73,7 +73,6 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.soundPlayStateChangeHandlerEventDispatcher = new EventDispatcher<>("stateChange");
         this.settingSoundPathEventDispatcher = new EventDispatcher<>("updateSelection");
         this.audioPlayer = new PomodoroAudioPlayer();
-        this.fileChooserModel = new PomodoroFileChooserModelImpl(new File("static/sound-on.mp3"));
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.timer = new Timer() {
             @Override
@@ -85,6 +84,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.pauseSliderModel = new SliderRangeModelImpl(1, 0, 1, 50);
         this.bigPauseSliderModel = new SliderRangeModelImpl(1, 0, 1, 50);
         this.cyclesSliderModel = new SliderRangeModelImpl(1, 0, 1, 10);
+        this.fileChooserModel = new PomodoroFileChooserModelImpl(new File("static/sound-on.mp3"));
     }
 
     /**
@@ -135,7 +135,7 @@ public class PomodoroModelImpl implements PomodoroModel {
             String configAsJson = FileUtils.readFileToString(confFile, StandardCharsets.UTF_8);
             LOG.debug("Actual configuration : {}", configAsJson);
             currentConfig = gson.fromJson(configAsJson, Config.class);
-            setSoundOnAudioPlayer(currentConfig.getSoundOnFilePath());
+            setSoundOnAudioPlayer();
             setCountDown(currentConfig.getWorkTime());
             setTimeOnLabel(countDown);
         } catch (IOException e) {
@@ -174,7 +174,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     /**
      * Reset to initial data
      */
-    private void reset() {
+    private void reset() throws StreamPlayerException {
         timer.cancel();
         audioPlayer.stop();
         cycles = 0;
@@ -182,6 +182,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         switchTimeType();
         setCountDown(currentConfig.getWorkTime());
         setTimeOnLabel(countDown);
+        setSoundOnAudioPlayer();
         fireUpdateCycles();
     }
 
@@ -194,7 +195,8 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.countDown = toSeconds(countDownInMinutes);
     }
 
-    private void setSoundOnAudioPlayer(String path) throws StreamPlayerException {
+    private void setSoundOnAudioPlayer() throws StreamPlayerException {
+        String path = currentConfig.getSoundOnFilePath();
         if (path != null && !"".equalsIgnoreCase(path)) {
             audioPlayer.open(new File(path));
         } else {
@@ -385,7 +387,12 @@ public class PomodoroModelImpl implements PomodoroModel {
     @Override
     public void whenClockReset() {
         LOG.debug("Countdown reset");
-        reset();
+        try {
+            reset();
+        } catch (StreamPlayerException e) {
+            LOG.error(e.getMessage());
+            exceptionThrownHandlerEventDispatcher.dispatch(e);
+        }
     }
 
     @Override
@@ -402,7 +409,7 @@ public class PomodoroModelImpl implements PomodoroModel {
             writeConf(currentConfig);
             reset();
             setSettingsDialogVisible(false);
-        } catch (IOException e) {
+        } catch (IOException | StreamPlayerException e) {
             LOG.error(e.getMessage());
             exceptionThrownHandlerEventDispatcher.dispatch(e);
         }
