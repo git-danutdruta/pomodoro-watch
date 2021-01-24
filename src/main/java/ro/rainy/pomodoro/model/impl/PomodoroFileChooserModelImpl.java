@@ -12,6 +12,13 @@ import java.io.File;
 public class PomodoroFileChooserModelImpl implements PomodoroFileChooserModel {
     private File file;
 
+    public PomodoroFileChooserModelImpl() {
+    }
+
+    public PomodoroFileChooserModelImpl(File file) {
+        this.file = file;
+    }
+
     @Override
     public File getSelectedFile() {
         return file;
