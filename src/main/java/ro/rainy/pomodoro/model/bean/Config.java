@@ -70,6 +70,7 @@ public class Config {
                 ", pauseTime=" + pauseTime +
                 ", bigPauseTime=" + bigPauseTime +
                 ", cyclesToBigPause=" + cyclesToBigPause +
+                ", soundOnFilePath=" + soundOnFilePath +
                 '}';
     }
 }
