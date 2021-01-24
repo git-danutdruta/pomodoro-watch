@@ -47,11 +47,11 @@ public class PomodoroModelImpl implements PomodoroModel {
     private final SliderRangeModel pauseSliderModel;
     private final SliderRangeModel bigPauseSliderModel;
     private final SliderRangeModel cyclesSliderModel;
+    private final PomodoroFileChooserModel fileChooserModel;
     private final Timer timer;
     private final Gson gson;
     private final PomodoroAudioPlayer audioPlayer;
     private Config currentConfig;
-    private PomodoroFileChooserModel fileChooserModel;
     private boolean frameVisible;
     private boolean settingsDialogVisible;
     private boolean soundPlay;
@@ -73,7 +73,7 @@ public class PomodoroModelImpl implements PomodoroModel {
         this.soundPlayStateChangeHandlerEventDispatcher = new EventDispatcher<>("stateChange");
         this.settingSoundPathEventDispatcher = new EventDispatcher<>("updateSelection");
         this.audioPlayer = new PomodoroAudioPlayer();
-        this.fileChooserModel = new PomodoroFileChooserModelImpl();
+        this.fileChooserModel = new PomodoroFileChooserModelImpl(new File("static/sound-on.mp3"));
         this.gson = new GsonBuilder().setPrettyPrinting().create();
         this.timer = new Timer() {
             @Override
@@ -135,7 +135,7 @@ public class PomodoroModelImpl implements PomodoroModel {
             String configAsJson = FileUtils.readFileToString(confFile, StandardCharsets.UTF_8);
             LOG.debug("Actual configuration : {}", configAsJson);
             currentConfig = gson.fromJson(configAsJson, Config.class);
-            audioPlayer.open(new File(currentConfig.getSoundOnFilePath()));
+            setSoundOnAudioPlayer(currentConfig.getSoundOnFilePath());
             setCountDown(currentConfig.getWorkTime());
             setTimeOnLabel(countDown);
         } catch (IOException e) {
@@ -192,6 +192,15 @@ public class PomodoroModelImpl implements PomodoroModel {
 
     public void setCountDown(int countDownInMinutes) {
         this.countDown = toSeconds(countDownInMinutes);
+    }
+
+    private void setSoundOnAudioPlayer(String path) throws StreamPlayerException {
+        if (path != null && !"".equalsIgnoreCase(path)) {
+            audioPlayer.open(new File(path));
+        } else {
+            exceptionThrownHandlerEventDispatcher.dispatch(new IllegalArgumentException("No audio file provided"));
+            System.exit(1);
+        }
     }
 
     private void bindDataFromSliderModelToDomain() {
@@ -397,11 +406,6 @@ public class PomodoroModelImpl implements PomodoroModel {
             LOG.error(e.getMessage());
             exceptionThrownHandlerEventDispatcher.dispatch(e);
         }
-    }
-
-    @Override
-    public void updateSoundPathFileSelection() {
-        settingSoundPathEventDispatcher.dispatch();
     }
 
     @Override
