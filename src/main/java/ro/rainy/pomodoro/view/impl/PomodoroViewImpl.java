@@ -196,7 +196,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
 
     @Override
     public void setSoundFilePathTxt(String filePathTxt) {
-
+        settingSoundFilePathTxt.setText(filePathTxt);
     }
 
     @Override
