@@ -32,7 +32,7 @@ public class PomodoroController {
         model.whenSettingPauseTimeChange(() -> view.setPauseTime(model.getPauseTime()));
         model.whenSettingBigPauseTimeChange(() -> view.setBigPauseTime(model.getBigPauseTime()));
         model.whenSettingCyclesTimeChange(() -> view.setCyclesOfTime(model.getCyclesOfTime()));
-        model.whenSoundSelectionChange(view::setSoundFilePathTxt);
+        model.whenSoundSelectionChange(()-> view.setSoundFilePathTxt(model.getPathOfSound()));
 
         view.whenSettingButtonClick(() -> model.setSettingsDialogVisible(true));
         view.whenSettingsDialogClose(model::whenSettingDialogClose);
