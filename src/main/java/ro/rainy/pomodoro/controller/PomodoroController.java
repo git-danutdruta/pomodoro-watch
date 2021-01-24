@@ -32,7 +32,7 @@ public class PomodoroController {
         model.whenSettingPauseTimeChange(() -> view.setPauseTime(model.getPauseTime()));
         model.whenSettingBigPauseTimeChange(() -> view.setBigPauseTime(model.getBigPauseTime()));
         model.whenSettingCyclesTimeChange(() -> view.setCyclesOfTime(model.getCyclesOfTime()));
-        model.whenSoundSelectionChange(()-> view.setSoundFilePathTxt(model.getPathOfSound()));
+        model.whenSoundSelectionChange(() -> view.setSoundFilePathTxt(model.getPathOfSound()));
 
         view.whenSettingButtonClick(() -> model.setSettingsDialogVisible(true));
         view.whenSettingsDialogClose(model::whenSettingDialogClose);
@@ -47,7 +47,7 @@ public class PomodoroController {
         view.whenPauseSliderChange(() -> view.setPauseTime(model.getPauseSliderRangeModel().getValue()));
         view.whenBigPauseSliderChange(() -> view.setBigPauseTime(model.getBigPauseSliderRangeModel().getValue()));
         view.whenCyclesSliderChange(() -> view.setCyclesOfTime(model.getCyclesSliderRangeModel().getValue()));
-        view.whenSoundFileChooserSelectionChange(model::updateSoundPathFileSelection);
+        view.whenSoundFileChooserSelectionChange(() -> view.setSoundFilePathTxt(model.getFileChooserModel().getSelectedFile().getAbsolutePath()));
 
         view.setWorkSliderRangeModel(model.getWorkSliderRangeModel());
         view.setPauseSliderRangeModel(model.getPauseSliderRangeModel());
