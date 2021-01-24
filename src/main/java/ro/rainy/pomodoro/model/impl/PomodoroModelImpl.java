@@ -399,7 +399,7 @@ public class PomodoroModelImpl implements PomodoroModel {
     public void updateSoundPathFileSelection() {
         File file = fileChooserModel.getSelectedFile();
         if (file != null) {
-
+            settingSoundPathEventDispatcher.dispatch(file.getAbsolutePath());
         }
     }
 
