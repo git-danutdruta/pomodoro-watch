@@ -32,6 +32,7 @@ If there's no configuration file, default one will be created with following val
 > - 5 min - pause
 > - 15 min - big break
 > - 4 - number of work sessions after you can get a big brake.
+> - static/sound-on.mp3 - test sound
 
 The cycles counter will increase only if a working session is completed.
 The color of label, that show countdown timer, alternate depending on type of session (e.g. <span style="color:green">green</span> on ***break*** & <span style="color:blue">blue</span> on ___TheZone___).    
