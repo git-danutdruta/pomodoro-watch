@@ -16,6 +16,7 @@ The application shows the following features:
 >   - duration of work session
 >   - duration of pause/big pause session
 >   - number of cycles after you can take a big break 
+>   - possibility to choose a sound file
 > - play button
 > - pause button
 > - reset button
