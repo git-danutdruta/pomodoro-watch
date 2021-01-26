@@ -20,7 +20,7 @@ The application shows the following features:
 > - play button
 > - pause button
 > - reset button
-> - sound button
+> - sound button - responsible for mute/unmute sound during the session
 > - elapsed work sessions
 
 In settings section you can modify work time session, break/big brake duration and after how many working sets
