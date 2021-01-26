@@ -104,7 +104,7 @@ public class PomodoroViewImpl extends AbstractFrame implements PomodoroView {
         settingBigPauseTimeTxt.setEditable(false);
         settingCyclesOfTimeTxt.setEditable(false);
         settingSoundFilePathTxt.setEditable(false);
-        FileFilter filter = new FileNameExtensionFilter("Allowed file .wav, .mp3 ", "wav", "mp3");
+        FileFilter filter = new FileNameExtensionFilter("Allowed file .mp3 ", "mp3");
         settingsSoundFileChooser.setAcceptAllFileFilterUsed(false);
         settingsSoundFileChooser.setFileFilter(filter);
     }
